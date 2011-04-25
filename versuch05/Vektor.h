@@ -55,7 +55,7 @@ public:
 	void ausgabe();
 
 private:
-	//member
+	// members
 	double x;
 	double y;
 	double z;

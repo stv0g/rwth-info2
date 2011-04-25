@@ -39,9 +39,10 @@ int main()
 	students.push_back(stud7);
 	students.push_back(stud8);
 
+	/* use std::algorithms to sort vector */
 	sort(students.begin(), students.end());
 
-	/* output again */
+	/* iterate over vector and print */
 	for (vector<Student>::iterator it = students.begin(); it != students.end(); ++it)
 	{
 		cout << *it;

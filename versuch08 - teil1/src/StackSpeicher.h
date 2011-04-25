@@ -77,7 +77,7 @@ bool StackSpeicher<size, T>::pop(T& e)
 }
 
 //////////////////////////////////////////////////////////////////////////////
-// Sortieren
+// Sortieren mit Quicksort
 template<int size, class T>
 void StackSpeicher<size, T>::sort(int start = 0, int ende = -1)
 {

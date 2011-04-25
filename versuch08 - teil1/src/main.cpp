@@ -18,7 +18,7 @@ using namespace std;
 
 int main()
 {
-	/* instantiate students */
+	/* create students */
 	Student stud1(22222, "Born"      ,"Jessica", "16.03.1986");
 	Student stud2(24528, "Rodenstock","Max"    , "09.02.1985");
 	Student stud3(95420, "Schneider" ,"Petra"  , "29.12.1989");

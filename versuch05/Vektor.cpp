@@ -54,7 +54,7 @@ Vektor Vektor::rotate(Vektor v, double angle)
 		{0,			 0,			  1}
 	};
 
-	/* Matrix Multiplikation */
+	/* Matrix Multiplikation + Runden */
 	return *new Vektor(
 			round(1000 * (L[0][0] * v.getX() + L[0][1] * v.getY() + L[0][2] * v.getZ())) / 1000,
 			round(1000 * (L[1][0] * v.getX() + L[1][1] * v.getY() + L[1][2] * v.getZ())) / 1000,

@@ -4,8 +4,9 @@
 #include <iostream>
 #include <string>
 #include <sstream>	// um double in string umzuwandeln.
+
 /**
- * Abstrakte Interface Klasse
+ * (Abstrakte) Interface Klasse
  */
 class Expression
 {
