@@ -15,6 +15,6 @@ int main(int argc, char *argv[])
 	QApplication app(argc, argv);
 	ImageController controller;
 
-	controller.show();
-	return app.exec();
+	controller.show(); /* show control panel */
+	return app.exec(); /* run qt application */
 }

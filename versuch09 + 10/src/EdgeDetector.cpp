@@ -10,8 +10,8 @@
 ///////////////////////////////// INCLUDES ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-#include <iostream>
 #include <math.h>
+#include <iostream>
 #include <QtGui/QImage>
 
 #include "EdgeDetector.h"
@@ -39,11 +39,6 @@ void EdgeDetector::setFilter(int a11, int a12, int a13, int a21, int a22,
 	filter.setMatrix(a11, a12, a13, a21, a22, a23, a31, a32, a33);
 }
 
-void EdgeDetector::transposeMatrix()
-{
-	filter.transpose();
-}
-
 void EdgeDetector::setSensivity(double newSensivity)
 {
 	sensivity = newSensivity;
@@ -61,11 +56,10 @@ void EdgeDetector::setFilterDirection(FilterDirection newDir)
 
 void EdgeDetector::applyFilter(QImage *in, QImage *out)
 {
-	long unsigned int max = 0;
 	int width = in->width();
 	int height = in->height();
-
-	long int raw[width][height];
+	long unsigned int max = 0; /* required for normalization */
+	double raw[width][height];
 
 	for (int y = 0; y < height; ++y)
 	{
@@ -73,7 +67,7 @@ void EdgeDetector::applyFilter(QImage *in, QImage *out)
 		{
 			/* outPixel[0] => HORIZONTAL
 			 * outPixel[1] => VERTICAL */
-			int outPixel[2] = {0};
+			double outPixel[2] = {0};
 
 			for (int i = 0; i < 3; i++)
 			{
@@ -98,7 +92,7 @@ void EdgeDetector::applyFilter(QImage *in, QImage *out)
 				}
 			}
 
-			/* take absolute */
+			/* take absolute value */
 			raw[x][y] = sqrt(pow(outPixel[HORIZONTAL], 2) + pow(outPixel[VERTICAL], 2));
 
 			if (raw[x][y] > max)
@@ -109,19 +103,19 @@ void EdgeDetector::applyFilter(QImage *in, QImage *out)
 	}
 
 	double scale = (max > 255 && normalize) ? 255 / (double) max : 1;
-	std::cout << "sensivity: " << sensivity << std::endl << "max pixel value: "
-			<< max << std::endl << "scaling now with: " << scale << std::endl;
+	std::cout << "sensivity: " << sensivity << std::endl
+			<< "max pixel value: " << max << std::endl
+			<< "scaling now with: " << scale << std::endl;
 
+	/* normalize and create output image */
 	for (int y = 0; y < out->height(); ++y)
 	{
 		for (int x = 0; x < out->width(); ++x)
 		{
 			raw[x][y] *= scale;
-			out->setPixel(x, y, qRgb(raw[x][y], raw[x][y], raw[x][y]));
+			out->setPixel(x, y, qRgb(round(raw[x][y]), round(raw[x][y]), round(raw[x][y])));
 		}
 	}
 
-	out->invertPixels(QImage::InvertRgba); /* edges => black */
-
-	std::cout << std::endl;
+	out->invertPixels(QImage::InvertRgba); /* edges => black not white! */
 }

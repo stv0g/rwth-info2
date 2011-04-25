@@ -10,6 +10,7 @@ ImageController::ImageController()
 	ui.setupUi(this);
 	viewers = new std::vector<ImageViewer*>;
 
+	/* setup signal & slots */
 	QObject::connect(this->ui.loadButton, SIGNAL(clicked()), this,
 			SLOT(loadImage()));
 	QObject::connect(this->ui.saveButton, SIGNAL(clicked()), this,

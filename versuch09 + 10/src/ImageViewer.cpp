@@ -13,6 +13,7 @@
 #include <QtCore/QString>
 #include <QtGui/QtGui>
 #include <QtGui/QColor>
+#include <QtGui/QSizePolicy>
 
 #include "ImageViewer.h"
 
@@ -36,7 +37,7 @@ ImageViewer::ImageViewer()
 
 	setCentralWidget(label);
 	setFocusPolicy(Qt::ClickFocus);
-	setSizePolicy(QSizePolicy::Fixed);
+	layout()->setSizeConstraint(QLayout::SetFixedSize);
 	setAttribute(Qt::WA_DeleteOnClose);
 	setWindowTitle("ImageViewer: " + name);
 }

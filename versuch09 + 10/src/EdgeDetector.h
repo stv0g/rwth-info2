@@ -31,11 +31,15 @@ public:
 		NONE
 	};
 
-	void transposeMatrix();
+	/* Faltungssumme berechnen */
 	void applyFilter(QImage *in, QImage *out);
 
+	/* Fitlermatrix ändern */
 	void setFilter(int a11, int a12, int a13, int a21, int a22, int a23, int a31, int a32, int a33);
+
+	/* Normalisierungsfaktur manuell festlegen */
 	void setSensivity(double newSensivity);
+
 	void setNormalize(bool newNormalize);
 	void setFilterDirection(FilterDirection newDir);
 

@@ -16,7 +16,5 @@ SOURCES += src/EdgeDetector.cpp \
     src/ImageController.cpp \
     src/ImageViewer.cpp \
     src/Matrix3x3.cpp \
-    src/main.cpp \
-    src/EdgeDetector.cpp \
-FORMS = src/ImageController.ui \
-    src/ImageController.ui
+    src/main.cpp
+FORMS = src/ImageController.ui
