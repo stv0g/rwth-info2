@@ -12,9 +12,11 @@ HEADERS += src/ImageController.h \
     src/ImageViewer.h \
     src/EdgeDetector.h \
     src/Matrix3x3.h
-SOURCES += src/ImageController.cpp \
+SOURCES += src/EdgeDetector.cpp \
+    src/ImageController.cpp \
     src/ImageViewer.cpp \
-    src/EdgeDetector.cpp \
+    src/Matrix3x3.cpp \
     src/main.cpp \
-    src/Matrix3x3.cpp
-FORMS = src/ImageController.ui
+    src/EdgeDetector.cpp \
+FORMS = src/ImageController.ui \
+    src/ImageController.ui
