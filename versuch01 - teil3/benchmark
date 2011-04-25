@@ -1,0 +1,17 @@
+machine:
+	model name	: Intel(R) Core(TM)2 Duo CPU     T7250  @ 2.00GHz
+	stepping	: 13
+	cpu MHz		: 2001.000
+	cache size	: 2048 KB
+
+recursive:
+	real	0m20.581s
+	user	0m20.473s
+	sys		0m0.080s
+	
+iterative:
+	real	0m0.005s
+	user	0m0.004s
+	sys		0m0.000s
+
+=> 20.581s / 0.005s = 4116.2 times faster
