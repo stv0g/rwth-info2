@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  LGSLoeser.h
 // Inhalt: Abstrakte Oberklasse LGSLoeser
@@ -19,14 +19,14 @@
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////// CLASS DECLARATION //////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
- 
+
 // Abstrakte Oberklasse
 class LGSLoeser
 {
 public:
-	// Lösungsmethode, übernimmt Matrix A und Vektor b und gibt die Lösung x zurück
+	// LÃ¶sungsmethode, Ã¼bernimmt Matrix A und Vektor b und gibt die LÃ¶sung x zurÃ¼ck
 	virtual Vektor loese(QMatrix A, Vektor b)=0;
-	
+
 protected:
 	Vektor* x;
 };

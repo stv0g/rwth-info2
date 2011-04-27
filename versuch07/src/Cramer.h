@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  Cramer.h
 // Inhalt: Cramer-Klasse
@@ -19,8 +19,10 @@
 ///////////////////////// CLASS DECLARATION //////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-
-
-
+class Cramer : public LGSLoeser
+{
+public:
+	Vektor loese(QMatrix A, Vektor b);
+};
 
 #endif /*CRAMER_H_*/

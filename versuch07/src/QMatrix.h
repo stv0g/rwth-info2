@@ -1,9 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  QMatrix.h
-// Inhalt: Matrix-Klasse zum speichern von quadratischen Matrizen variabler Größe
+// Inhalt: Matrix-Klasse zum speichern von quadratischen Matrizen variabler Grï¿½ï¿½e
 //////////////////////////////////////////////////////////////////////////////
 
 #ifndef QMATRIX_H_
@@ -24,13 +24,17 @@ using namespace std;
 class QMatrix
 {
 public:
-	// Konstruktor, übernimmt die Dimension
+	// Konstruktor, Ã¼bernimmt die Dimension
 	QMatrix(int n);
-	//Kopierkonstruktor
+
+	// Kopierkonstruktor
 	QMatrix(const QMatrix&);
-	// Zuweisungsoperator
+
+	// Operatoren Ãœberladen
 	QMatrix& operator=(const QMatrix& B);
-	//Destruktor
+	QMatrix operator*(const double scalar);
+
+	// Destruktor
 	~QMatrix();
 	
 	// Set- und Getmethoden zum Bearbeiten und Lesen der Inhalte des Vektors
@@ -38,9 +42,12 @@ public:
 	void set(const int i, const int j, const double zahl);
 	int getDim() const;
 	
-	// Hilfsmethoden für die Cramersche Regel
+	// Hilfsmethoden fÃ¼r die Cramersche Regel
 	void transponiere();
 	QMatrix untermatrix(int i, int j);
+	QMatrix inverse();
+	QMatrix adjunkte();
+	double determinante();
 	
 private:
 	double* A; // Matrix

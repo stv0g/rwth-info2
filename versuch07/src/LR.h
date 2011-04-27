@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  LR.h
 // Inhalt: LR-Klasse
@@ -24,18 +24,18 @@
 class LR: public LGSLoeser
 {
 public:
-	// Konstruktor, übernimmt die Dimension
+	// Konstruktor, Ã¼bernimmt die Dimension
 	LR(int n);
-	// Lösungsmethode, übernimmt Matrix A und Vektor b und gibt die Lösung x zurück
+	// LÃ¶sungsmethode, Ã¼bernimmt Matrix A und Vektor b und gibt die LÃ¶sung x zurÃ¼ck
 	Vektor loese(QMatrix A, Vektor b);
      // Destruktor
      ~LR();
 
 private:
-	// Unterteilung des Lösungsvorgangs in 4 Schritte:
+	// Unterteilung des LÃ¶sungsvorgangs in 4 Schritte:
 	// Zerlegt Matrix A, Die zerlegten Matrizen L und R sind danach in A gespeichert
 	void zerlege(QMatrix& A);
-	// Herauskopieren der bedeutenden Einträge in L und R
+	// Herauskopieren der bedeutenden EintrÃ¤ge in L und R
 	void erzeugeLundR(QMatrix& A);
 	// Vorwaertseinsetzen(berechnen von Vektor y aus L und b)
 	void vorwaertsEinsetzen(Vektor& b);

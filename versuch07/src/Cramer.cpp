@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  Cramer.cpp
 // Inhalt: Cramer-Klasse
@@ -20,5 +20,22 @@
 //////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////
+Vektor Cramer::loese(QMatrix A, Vektor b)
+{
+	int dim = A.getDim();
+	double det = A.determinante();
+	Vektor result(dim);
 
+	for (int l = 0; l < dim; l++)
+	{
+		QMatrix Ai = A;
+		for (int k = 0; k < dim; k++) /* konstruiere Ai: i-te Spalte wird durch b ersetzt */
+		{
+			Ai.set(k, l, b.get(k));
+		}
 
+		result.set(l, Ai.determinante() / det);
+	}
+
+	return result;
+}

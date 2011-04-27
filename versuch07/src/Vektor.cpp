@@ -1,9 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  Vektor.cpp
-// Inhalt: Vektor-Klasse zum speichern von Vektoren variabler Größe
+// Inhalt: Vektor-Klasse zum speichern von Vektoren variabler Grï¿½ï¿½e
 //////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ Vektor::~Vektor()
 }
 
 //////////////////////////////////////////////////////////////////////////////
-// Getmethode für den i-ten Eintrag
+// Getmethode fï¿½r den i-ten Eintrag
 double Vektor::get(const int i) const
 {
 	return v[i];
@@ -70,7 +70,7 @@ double Vektor::get(const int i) const
 // Schreibt Zahl an den i-ten Eintrag 
 void Vektor::set(const int i, const double zahl)
 {
-	v[i]=zahl;
+	v[i] = zahl;
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@ int Vektor::getDim() const
 }
 
 //////////////////////////////////////////////////////////////////////////////
-// Ausgabeoperator, außerhalb der Klasse implementiert
+// Ausgabeoperator, auï¿½erhalb der Klasse implementiert
 ostream& operator<<(ostream& Stream, const Vektor& v)
 {
 	for (int i = 0; i < v.getDim(); i++)
@@ -88,5 +88,5 @@ ostream& operator<<(ostream& Stream, const Vektor& v)
 		Stream << setprecision(3) << v.get(i) << endl;
 	}
 	Stream << endl;
-    return Stream;
+	return Stream;
 }

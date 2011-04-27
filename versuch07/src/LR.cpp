@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  LR.cpp
 // Inhalt: LR-Klasse
@@ -42,22 +42,44 @@ Vektor LR::loese(QMatrix A, Vektor b)
 	erzeugeLundR(A);
 	vorwaertsEinsetzen(b);
 	rueckwaertsEinsetzen();
-	
+
 	return *x;
 }
 
 //////////////////////////////////////////////////////////////////////////////
-
-// Der PseudoCode funktioniert nur, wenn nicht durch 0 dividiert wird.
 void LR::zerlege(QMatrix& A)
 {
+	// TODO Der PseudoCode funktioniert nur, wenn nicht durch 0 dividiert wird.
+	for (int i = 1; i <= A.getDim(); i++)
+	{
+		for (int j = i + 1; j <= A.getDim(); j++)
+		{
+			A.set(j, i, A.get(j, i) / A.get(i, i));
 
+			for (int k = i + 1; k <= A.getDim(); k++)
+			{
+				A.set(j, k, A.get(j, k) - (A.get(j, i) * A.get(i, k)));
+			}
+		}
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////
 // Schreibe aus der Matrix A in die Matrizen L und R
 void LR::erzeugeLundR(QMatrix& A)
 {
+	for (int i = 1; i <= A.getDim(); i++)
+	{
+		for (int j = 1; j <= A.getDim(); j++)
+		{
+			if (i == j) /* Diagonale */
+			{
+				L->set(i, j, 1.0);
+			}
+
+			R->set(i, j, A.get(i, j));
+		}
+	}
 
 }
 
@@ -72,17 +94,4 @@ void LR::rueckwaertsEinsetzen()
 {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 

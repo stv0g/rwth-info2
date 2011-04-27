@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: LÃ¶sung eines mathematischen Anwendungsproblems
 //
 // Datei:  Gauss.cpp
 // Inhalt: Gauss-Klasse
@@ -22,5 +22,5 @@ using namespace std;
 
 
 //////////////////////////////////////
-////Hier Implementierung einfügen ////
+////Hier Implementierung einfÃ¼gen ////
 //////////////////////////////////////
