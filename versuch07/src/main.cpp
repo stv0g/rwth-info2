@@ -6,20 +6,20 @@
 // Inhalt: Hauptprogramm
 //////////////////////////////////////////////////////////////////////////////
 
+#include <iostream>
+#include <cstdlib>
+
 #include "QMatrix.h"
 #include "Vektor.h"
 #include "LR.h"
 #include "Gauss.h"
 #include "Cramer.h"
-#include <iostream>
 
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////
 void Eingabe(QMatrix& A, int n);
 void Eingabe(Vektor& b, int n);
-
-//////////////////////////////////////////////////////////////////////////////
 
 /*
  Die Benennung der Variablen entspricht, in diesem Versuch,
@@ -29,56 +29,79 @@ void Eingabe(Vektor& b, int n);
  */
 
 //////////////////////////////////////////////////////////////////////////////
-
 int main()
 {
 	int dim = 3;
-	//cout << "Wieviele Gleichungen/Unbekannte hat ihr LGS?: "; cin >> dim;
 	QMatrix A(dim);
 	Vektor b(dim);
 	Vektor x(dim);
-	//Eingabe(A, dim);
-	//Eingabe(b, dim);
 
-	/* Beispiel Daten. Ergebnis (4, -2, -1) */
-	A.set(0, 0, 1);
-	A.set(0, 1, 2);
-	A.set(0, 2, 2);
-	A.set(1, 0, 2);
-	A.set(1, 1, 3);
-	A.set(1, 2, 1);
-	A.set(2, 0, 3);
-	A.set(2, 1, 4);
-	A.set(2, 2, 1);
+	char eingabe;
+	cout << "Wollen Sie selbst ein LGS angeben (j/n)? ";
+	cin >> eingabe;
+	if (eingabe == 'j')
+	{
+		cout << "Wieviele Gleichungen/Unbekannte hat ihr LGS?: ";
+		cin >> dim;
+		Eingabe(A, dim);
+		Eingabe(b, dim);
+	}
+	else
+	{
+		/* Beispiel Daten. Ergebnis (4, -2, -1) */
+		A.set(0, 0, 1);
+		A.set(0, 1, 2);
+		A.set(0, 2, 2);
+		A.set(1, 0, 2);
+		A.set(1, 1, 3);
+		A.set(1, 2, 1);
+		A.set(2, 0, 3);
+		A.set(2, 1, 4);
+		A.set(2, 2, 1);
 
-	b.set(0, -2);
-	b.set(1, 1);
-	b.set(2, 3);
+		b.set(0, -2);
+		b.set(1, 1);
+		b.set(2, 3);
 
-	/*A.set(0, 0, 3);
-	A.set(0, 1, 2);
-	A.set(0, 2, 1);
-	A.set(1, 0, 6);
-	A.set(1, 1, 6);
-	A.set(1, 2, 3);
-	A.set(2, 0, 9);
-	A.set(2, 1, 10);
-	A.set(2, 2, 6);
+		/*A.set(0, 0, 3);
+		 A.set(0, 1, 2);
+		 A.set(0, 2, 1);
+		 A.set(1, 0, 6);
+		 A.set(1, 1, 6);
+		 A.set(1, 2, 3);
+		 A.set(2, 0, 9);
+		 A.set(2, 1, 10);
+		 A.set(2, 2, 6);
 
-	b.set(0, 1);
-	b.set(1, 1);
-	b.set(2, 1);*/
+		 b.set(0, 1);
+		 b.set(1, 1);
+		 b.set(2, 1);*/
+	}
 
-	cout << "A = " << endl << A;
+	cout << endl << "A = " << endl << A;
 	cout << "b = " << endl << b;
-	//cout << "Dim(A) = " << A.getDim() << endl;
-	//cout << "Det(A) = " << A.determinante() << endl;
-	//cout << "Adj(A) = " << endl << A.adjunkte() << endl;
-	//cout << "A^-1 = " << endl << A.inverse() << endl;
 
-	Cramer	solver1(dim);
-	LR 		solver2(dim);
-	Gauss	solver3(dim);
+	if (A.determinante() == 0)
+	{
+		cerr << "Fehler: Das LGS besitzt keine eindeutige Lösung (det(A) = 0)!"
+				<< endl;
+		exit(-1);
+	}
+
+	cout << "Wollen Sie weitere Eigenschaften der Koeffizientenmatrix berechnen (j/n)? ";
+	cin >> eingabe;
+	if (eingabe == 'j')
+	{
+		cout << "Dim(A) = " << A.getDim() << endl;
+		cout << "Det(A) = " << A.determinante() << endl;
+		cout << "Adj(A) = " << endl << A.adjunkte() << endl;
+		cout << "A^-1 = " << endl << A.inverse() << endl;
+		cout << "A^T = " << endl << A.transponiere() << endl;
+	}
+
+	Cramer solver1(dim);
+	LR solver2(dim);
+	Gauss solver3(dim);
 
 	cout << "x_cramer =" << endl << solver1.loese(A, b);
 	cout << "x_lr =" << endl << solver2.loese(A, b);

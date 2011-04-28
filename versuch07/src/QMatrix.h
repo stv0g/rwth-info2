@@ -43,7 +43,8 @@ public:
 	int getDim() const;
 	
 	// Hilfsmethoden für die Cramersche Regel
-	void transponiere();
+	QMatrix transponiere();
+	QMatrix vertauscheZeile(int i, int j);
 	QMatrix untermatrix(int i, int j);
 	QMatrix inverse();
 	QMatrix adjunkte();

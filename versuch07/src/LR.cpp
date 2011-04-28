@@ -51,7 +51,22 @@ void LR::zerlege(QMatrix& A)
 {
 	int dim = A.getDim();
 
-	// TODO Der PseudoCode funktioniert nur, wenn nicht durch 0 dividiert wird.
+	/* Vertausche Zeilen um 0en in der Hauptdiagonale zu vermeiden */
+	for (int i = 0; i < dim; i++)
+	{
+		if (A.get(i, i) == 0) /* 0 gefunden! */
+		{
+			for (int j = 0; j < dim; j++)
+			{
+				if (i != j && A.get(j, i) != 0) {
+					A.vertauscheZeile(i, j);
+					cout << "Zeile " << i+1 << " und " << j+1 << " vertauscht!" << endl;
+					break;
+				}
+			}
+		}
+	}
+
 	for (int i = 0; i < dim; i++)
 	{
 		for (int j = i + 1; j < dim; j++)
@@ -91,7 +106,6 @@ void LR::erzeugeLundR(QMatrix& A)
 			}
 		}
 	}
-
 }
 
 //////////////////////////////////////////////////////////////////////////////

@@ -49,6 +49,24 @@ void Gauss::stufenform()
 {
 	int dim = A->getDim();
 
+	/* Vertausche Zeilen um 0en in der Hauptdiagonale zu vermeiden */
+	for (int i = 0; i < dim; i++)
+	{
+		if (A->get(i, i) == 0) /* 0 gefunden! */
+		{
+			for (int j = 0; j < dim; j++)
+			{
+				if (i != j && A->get(j, i) != 0)
+				{
+					A->vertauscheZeile(i, j);
+					cout << "Zeile " << i + 1 << " und " << j + 1
+							<< " vertauscht!" << endl;
+					break;
+				}
+			}
+		}
+	}
+
 	for (int k = 0; k < dim; k++)
 	{
 		for (int l = k + 1; l < dim; l++)
@@ -70,7 +88,7 @@ void Gauss::rueckwaertsEinsetzen()
 {
 	int dim = A->getDim();
 
-	for (int i = dim-1; i >= 0; i--)
+	for (int i = dim - 1; i >= 0; i--)
 	{
 		double xi = b->get(i);
 

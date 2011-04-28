@@ -94,17 +94,31 @@ int QMatrix::getDim() const
 
 //////////////////////////////////////////////////////////////////////////////
 // Transponiere die Matrix
-void QMatrix::transponiere()
+QMatrix QMatrix::transponiere()
 {
-	double temp;
+	QMatrix mat(dim);
+
 	for (int i = 0; i < dim; i++)
 	{
-		for (int j = i + 1; j < dim; j++)
+		for (int j = 0; j < dim; j++)
 		{
-			temp = A[i * dim + j];
-			A[i * dim + j] = A[j * dim + i];
-			A[j * dim + i] = temp;
+			mat.set(i, j, A[j * dim + i]);
 		}
+	}
+
+	return mat;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+QMatrix QMatrix::vertauscheZeile(int i, int j)
+{
+	double temp;
+
+	for (int k = 0; k < dim; k++)
+	{
+		temp = A[i * dim + k];
+		A[i * dim + k] = A[j * dim + k];
+		A[j * dim + k] = temp;
 	}
 }
 
@@ -173,9 +187,7 @@ QMatrix QMatrix::adjunkte()
 		}
 	}
 
-	mat.transponiere();
-
-	return mat;
+	return mat.transponiere();
 }
 
 //////////////////////////////////////////////////////////////////////////////
