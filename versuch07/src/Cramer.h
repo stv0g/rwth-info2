@@ -22,6 +22,7 @@
 class Cramer : public LGSLoeser
 {
 public:
+	Cramer(int dim);
 	Vektor loese(QMatrix A, Vektor b);
 };
 

@@ -11,7 +11,6 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "QMatrix.h"
-
 #include <cmath>
 
 //////////////////////////////////////////////////////////////////////////////
@@ -69,7 +68,7 @@ QMatrix& QMatrix::operator=(const QMatrix& B)
 // Destruktor
 QMatrix::~QMatrix()
 {
-	delete[] A;
+	//delete[] A;
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -143,8 +142,6 @@ QMatrix QMatrix::inverse()
 //////////////////////////////////////////////////////////////////////////////
 double QMatrix::determinante()
 {
-	int dim = getDim();
-
 	if (dim == 1)
 	{
 		return get(0, 0);
@@ -154,7 +151,7 @@ double QMatrix::determinante()
 		double det = 0;
 
 		// Laplace Entwicklung nach erster Spalte
-		for (int i = 0; i < getDim(); i++)
+		for (int i = 0; i < dim; i++)
 		{
 			det += pow(-1, i+2) * get(i, 0) * untermatrix(i, 0).determinante();
 		}
@@ -166,11 +163,11 @@ double QMatrix::determinante()
 //////////////////////////////////////////////////////////////////////////////
 QMatrix QMatrix::adjunkte()
 {
-	QMatrix mat(getDim());
+	QMatrix mat(dim);
 
-	for (int i = 0; i < getDim(); i++)
+	for (int i = 0; i < dim; i++)
 	{
-		for (int j = 0; j < getDim(); j++)
+		for (int j = 0; j < dim; j++)
 		{
 			mat.set(i, j, pow(-1, i+j) * untermatrix(i, j).determinante());
 		}
@@ -186,9 +183,9 @@ QMatrix QMatrix::operator*(double scalar)
 {
 	QMatrix mat(getDim());
 
-	for (int i = 0; i < getDim(); i++)
+	for (int i = 0; i < dim; i++)
 	{
-		for (int j = 0; j < getDim(); j++)
+		for (int j = 0; j < dim; j++)
 		{
 			mat.set(i, j, get(i, j) * scalar);
 		}

@@ -19,12 +19,16 @@
 ///////////////////////// Funktions-Implementierung //////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
+Cramer::Cramer(int dim)
+{
+	x = new Vektor(dim);
+}
+
 //////////////////////////////////////////////////////////////////////////////
 Vektor Cramer::loese(QMatrix A, Vektor b)
 {
 	int dim = A.getDim();
 	double det = A.determinante();
-	Vektor result(dim);
 
 	for (int l = 0; l < dim; l++)
 	{
@@ -34,8 +38,8 @@ Vektor Cramer::loese(QMatrix A, Vektor b)
 			Ai.set(k, l, b.get(k));
 		}
 
-		result.set(l, Ai.determinante() / det);
+		x->set(l, Ai.determinante() / det);
 	}
 
-	return result;
+	return *x;
 }

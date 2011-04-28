@@ -1,9 +1,9 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: Lösung eines mathematischen Anwendungsproblems
+// Versuch 7: Lï¿½sung eines mathematischen Anwendungsproblems
 //
 // Datei:  Vektor.h
-// Inhalt: Vektor-Klasse zum speichern von Vektoren variabler Größe
+// Inhalt: Vektor-Klasse zum speichern von Vektoren variabler GrÃ¶ÃŸe
 //////////////////////////////////////////////////////////////////////////////
 
 #ifndef VEKTOR_H_
@@ -24,7 +24,7 @@ using namespace std;
 class Vektor
 {
 public:
-	// Konstruktor, übernimmt die Dimension
+	// Konstruktor, ï¿½bernimmt die Dimension
 	Vektor(int n);
 	//Kopierkonstruktor
 	Vektor(const Vektor&);

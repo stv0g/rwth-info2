@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////////
 // Praktikum Informatik 1
-// Versuch 7: L�sung eines mathematischen Anwendungsproblems
+// Versuch 7: L�sung eines mathematischen Anwendungsproblems
 //
 // Datei:  Gauss.h
 // Inhalt: Gauss-Klasse
@@ -14,11 +14,30 @@
 //////////////////////////////////////////////////////////////////////////////
 
 #include "LGSLoeser.h"
+#include "QMatrix.h"
 
 //////////////////////////////////////////////////////////////////////////////
 ///////////////////////// CLASS DECLARATION //////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
+class Gauss: public LGSLoeser
+{
+public:
+	// Konstruktor, übernimmt die Dimension
+	Gauss(int n);
 
+	// Lösungsmethode, übernimmt Matrix A und Vektor b und gibt die Lösung x zurück
+	Vektor loese(QMatrix A, Vektor b);
+
+	// Destruktor
+	~Gauss();
+
+private:
+	void stufenform();
+	void rueckwaertsEinsetzen();
+
+	QMatrix *A;
+	Vektor *b;
+};
 
 #endif /*GAUSS_H_*/
