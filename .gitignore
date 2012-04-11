@@ -3,3 +3,4 @@
 *.d
 moc_*.cpp
 *~ core *.core
+.metadata/
